@@ -1,0 +1,20 @@
+{
+    "classes": {
+        "role::vcs": {}
+    },
+    "description": "",
+    "environment": "production",
+    "environment_trumps": false,
+    "id": "e4b41bbd-7d03-4bad-b5b7-e7e02b72773f",
+    "name": "Version Control Server",
+    "parent": "00000000-0000-4000-8000-000000000000",
+    "rule": [
+        "or",
+        [
+            "~",
+            "name",
+            "git"
+        ]
+    ],
+    "variables": {}
+}

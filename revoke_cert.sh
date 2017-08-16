@@ -13,5 +13,5 @@ KEY=$(puppet config print hostprivkey)
 CACERT=$(puppet config print localcacert) 
 MASTER=$(puppet config print certname)
 
-curl -s -X PUT --data @/vagrant/scripts/decom_node.json --cert $CERT --key $KEY --cacert $CACERT https://${MASTER}:8140/puppet-ca/v1/certificate_status/${NODE}?environment=production
+curl -X PUT -H 'Content-Type: text/pson' --data '{"desired_state":"revoked"}' --cert $CERT --key $KEY --cacert $CACERT https://${MASTER}:8140/puppet-ca/v1/certificate_status/${NODE}?environment=production
 curl -s -X DELETE --cert $CERT --key $KEY --cacert $CACERT https://${MASTER}:8140/puppet-ca/v1/certificate_status/${NODE}?environment=production

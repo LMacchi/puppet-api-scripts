@@ -11,7 +11,7 @@ NODE=$1
 CERT=$(puppet config print hostcert)
 KEY=$(puppet config print hostprivkey) 
 CACERT=$(puppet config print localcacert) 
-MASTER=$(puppet config print certname)
+MASTER=$(puppet config print server)
 
 curl -X PUT -H 'Content-Type: text/pson' --data '{"desired_state":"revoked"}' --cert $CERT --key $KEY --cacert $CACERT https://${MASTER}:8140/puppet-ca/v1/certificate_status/${NODE}?environment=production
 curl -s -X DELETE --cert $CERT --key $KEY --cacert $CACERT https://${MASTER}:8140/puppet-ca/v1/certificate_status/${NODE}?environment=production
